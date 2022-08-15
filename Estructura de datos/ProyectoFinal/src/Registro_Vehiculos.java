@@ -472,7 +472,7 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
-    * En los siguiente método, desde la línea 441 a la 450,
+    * En los siguiente método, desde la línea 479 a la 488,
     * se lee el dato de "Placa" y se elimina el vehículo de la Cola
     * @author melan
     */
@@ -486,7 +486,11 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
         }
         limpiar();
     }//GEN-LAST:event_EliminarActionPerformed
-
+    /**
+    * En los siguiente método, desde la línea 494 a la 4502,
+    * se lee el dato de "Placa" y se modifica el vehículo de la Cola
+    * @author melan
+    */
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
         placa = jTextField6.getText();
         if(!Vacios()){
