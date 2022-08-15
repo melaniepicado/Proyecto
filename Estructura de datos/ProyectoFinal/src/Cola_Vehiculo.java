@@ -107,11 +107,12 @@ public class Cola_Vehiculo {
         NodoV actual = new NodoV();
         actual = frente;
         String encontrado = x.getPlaca();
-        if (frente == null){
-            while(actual == null & encuentra(encontrado)){
+        if (frente != null){
+            while(actual != null & encuentra(encontrado)){
                 if(actual.getDato().getPlaca().equals(encontrado)){
                     actual.setDato(x);
                 }
+                actual = actual.getAtras();
             }
         }else{
             System.out.println("Cola vacía");
