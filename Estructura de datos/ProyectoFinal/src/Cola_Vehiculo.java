@@ -6,9 +6,14 @@ public class Cola_Vehiculo {
     private NodoV frente;
     private NodoV ultimo;
     private int tamaño;
+    
+    private NodoP cima;
+    private int largo;
 
     public Cola_Vehiculo() {
-    }
+        this.cima = null;
+        this.largo = 0;
+    }    
 
     public NodoV getFrente() {
         return frente;
