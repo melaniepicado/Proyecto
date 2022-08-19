@@ -64,14 +64,14 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
                     Extras="SISTEMA DE ENTRETENIMIENTO EN LOS ASIENTOS POSTERIORES";
                     break;
             }
-             Pila Per=new Pila();
-             Per.push(Días_de_alquiler);
-             Per.push(Cantidad_de_pasajeros);
-             Per.push(Marca_del_vehículo);
-             Per.push(Modelo_del_vehículo);
-             Per.push(Extras);   
+             Union Per=new Union();
+             Per.p.push(Días_de_alquiler);
+             Per.p.push(Cantidad_de_pasajeros);
+             Per.p.push(Marca_del_vehículo);
+             Per.p.push(Modelo_del_vehículo);
+             Per.p.push(Extras);   
              JOptionPane.showMessageDialog(null, "Se han guardado los datos");
-             Per.listar();
+             Per.p.listar();
         }
         
         
