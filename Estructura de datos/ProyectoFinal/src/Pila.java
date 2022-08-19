@@ -1,6 +1,4 @@
 public class Pila {
-   
- 
     private NodoP cima;
     private int largo;
 
@@ -14,7 +12,7 @@ public class Pila {
     public int tamanio(){ return this.largo;}
     
     public void push(String Letra){
-        Node newNode = new Node();
+        NodoP newNode = new NodoP();
         newNode.setLetra(Letra);
         
         if (this.Vacia()){
@@ -26,25 +24,14 @@ public class Pila {
         }
         this.largo++;
     }
-    
-     public String Cadena(String letra){
-         
-          if(letra == letra ){
-           push("");
-           push("");  
-           push("");
-           push("");
-           push("");
-              return letra;
-          }else{
-              return letra;
-          }
-      }
      
-     public void listar(){    
-        Node aux = cima;
+     public void listar(){
+        
+        NodoP aux = cima;
         while(aux != null){
-            System.out.print(aux.getLetra()+" ");
+            
+            System.out.println("|\t" + aux.getLetra()+ "\t|");
+            System.out.println("-----------------");
             aux = aux.getSiguiente();
         }
     }

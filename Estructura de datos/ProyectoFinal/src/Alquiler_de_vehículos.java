@@ -3,9 +3,10 @@ import javax.swing.JOptionPane;
 
 public class Alquiler_de_vehículos extends javax.swing.JFrame {
 
+   
     private String Días_de_alquiler;
     private String Cantidad_de_pasajeros;
-    private String Marca_del_vehículo;
+    protected String Marca_del_vehículo;
     private String Modelo_del_vehículo;
     private String Extras;
   
@@ -14,8 +15,6 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
         llenarComboHorario();
         setTitle("Alquiler de vehículo");
         setLocationRelativeTo(null);
-        ImageIcon iconoFrom=new ImageIcon("iconos/icons8-embotellamiento-16.png");
-        setIconImage(new ImageIcon(getClass().getResource(iconoFrom.getDescription())).getImage());
         setResizable(false);
     }
      public void llenarComboHorario(){
@@ -30,6 +29,7 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
         jTextField1.setText("");
         jTextField2.setText("");
         jTextField3.setText("");
+        jTextField4.setText("");
         jComboBox1.setSelectedIndex(0);
     }
     
@@ -48,7 +48,7 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
             Días_de_alquiler = jTextField1.getText();
             Cantidad_de_pasajeros = jTextField2.getText();
             Marca_del_vehículo = jTextField3.getText();
-            Modelo_del_vehículo = jTextField3.getText();
+            Modelo_del_vehículo = jTextField4.getText();
             
             switch (jComboBox1.getSelectedIndex()) { //Combobox 1
                 case 0:
@@ -64,9 +64,19 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
                     Extras="SISTEMA DE ENTRETENIMIENTO EN LOS ASIENTOS POSTERIORES";
                     break;
             }
+             Pila Per=new Pila();
+             Per.push(Días_de_alquiler);
+             Per.push(Cantidad_de_pasajeros);
+             Per.push(Marca_del_vehículo);
+             Per.push(Modelo_del_vehículo);
+             Per.push(Extras);   
+             JOptionPane.showMessageDialog(null, "Se han guardado los datos");
+             
+             Per.listar();
         }
+        
+        
    }
-
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -77,14 +87,14 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -144,15 +154,15 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Cédula");
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
             }
         });
 
@@ -184,8 +194,8 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(jTextField6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(jTextField7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -209,11 +219,11 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
-                    .add(jTextField6))
+                    .add(jTextField1))
                 .add(18, 20, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
-                    .add(jTextField7))
+                    .add(jTextField2))
                 .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
@@ -261,13 +271,13 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
@@ -319,10 +329,10 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }
