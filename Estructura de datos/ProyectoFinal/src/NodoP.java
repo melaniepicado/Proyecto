@@ -1,19 +1,21 @@
 public class NodoP {
  
-    private String Letra;
+    private Alquiler_Vehiculos dato;
     private NodoP siguiente;
     
+    public NodoP(Alquiler_Vehiculos dato) {
+        this.dato = dato;
+    }
+
     public NodoP() {
-        this.Letra = "";
-        this.siguiente = null;
     }
 
-    public String getLetra() {
-        return Letra;
+    public Alquiler_Vehiculos getDato() {
+        return dato;
     }
 
-    public void setLetra(String Letra) {
-        this.Letra = Letra;
+    public void setDato(Alquiler_Vehiculos dato) {
+        this.dato = dato;
     }
 
     public NodoP getSiguiente() {
@@ -22,5 +24,5 @@ public class NodoP {
 
     public void setSiguiente(NodoP siguiente) {
         this.siguiente = siguiente;
-    }    
+    }
 }

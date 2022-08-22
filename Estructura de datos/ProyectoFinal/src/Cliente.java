@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 /**
  *
  * @author MIKE-PC
@@ -65,12 +60,12 @@ public class Cliente {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
+
     @Override
-    public String toString(){
-        return "Cliente{" + "Cedula="+cedula+", Nombre Completo="+NombreC+
-                ",Fecha Nacimiento="+FechaNac+", Correo electronico="+correo+
-                "Categoria="+categoria+'}';
+    public String toString() {
+        return "Cliente{" + "cedula=" + cedula + ", NombreC=" + NombreC + 
+                ", FechaNac=" + FechaNac + ", correo=" + correo + ", "
+                + "categoria=" + categoria + '}';
     }
     
 }

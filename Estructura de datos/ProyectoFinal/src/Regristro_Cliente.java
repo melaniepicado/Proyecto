@@ -1,26 +1,13 @@
-
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author MIKE-PC
- */
-public class JFrameCliente extends javax.swing.JFrame {
+public class Regristro_Cliente extends javax.swing.JFrame {
     
-    Lista c = new Lista();
-     private String nombre, fecha, correo, categoria;
-     private int cedula;
+    Union u = new Union();
+    private String nombre, fecha, correo, categoria;
+    private int cedula;
 
-    /**
-     * Creates new form JFrameCliente
-     */
-    public JFrameCliente() {
+    public Regristro_Cliente() {
         initComponents();
         setTitle("Registro, modificación y eliminación de Clientes");
         setLocationRelativeTo(null);
@@ -54,7 +41,7 @@ public class JFrameCliente extends javax.swing.JFrame {
         jButtonEliminar = new javax.swing.JButton();
         jCboxCategoria = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Cedula");
 
@@ -66,7 +53,7 @@ public class JFrameCliente extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Fecha de");
+        jLabel3.setText("Fecha de cumpleaños");
 
         jLabel4.setText("Correo");
 
@@ -99,8 +86,6 @@ public class JFrameCliente extends javax.swing.JFrame {
             }
         });
 
-        jCboxCategoria.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jCboxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jCboxCategoria.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCboxCategoriaItemStateChanged(evt);
@@ -135,7 +120,7 @@ public class JFrameCliente extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JBtnRegistro)
                             .addComponent(jButtonModificar))
-                        .addContainerGap(228, Short.MAX_VALUE))))
+                        .addContainerGap(197, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,15 +161,11 @@ public class JFrameCliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, Short.MAX_VALUE)
         );
 
         pack();
@@ -205,6 +186,13 @@ public class JFrameCliente extends javax.swing.JFrame {
         }else{
             return false;
         }   
+    }
+    public void limpiar(){
+        jTxtNombre.setText("");
+        jTxtCedula.setText("");
+        jTxtFecha.setText("");
+        jTxtCorreo.setText("");
+        jCboxCategoria.setSelectedIndex(0);
     }
     
     public void agregar(){
@@ -231,9 +219,8 @@ public class JFrameCliente extends javax.swing.JFrame {
                     categoria="Zafiro";
                     break;
             }
-            
-            c.inserta(new Cliente(cedula,nombre,fecha,correo,categoria));
-        
+            u.l.inserta(new Cliente(cedula,nombre,fecha,correo,categoria));
+            u.l.toString();
         }
             
     }
@@ -244,24 +231,26 @@ public class JFrameCliente extends javax.swing.JFrame {
         fecha = jTxtFecha.getText();
         correo = jTxtCorreo.getText();
             
-            switch (jCboxCategoria.getSelectedIndex()){ // Combobox Categorias
-                case 0:
-                    categoria="Bronce";
-                    break;
-                case 1:
-                    categoria="Plata";
-                    break;
-                case 2:
-                    categoria="Oro";
-                    break; 
-                case 3:
-                    categoria="Zafiro";
-                    break;
-            }
+        switch (jCboxCategoria.getSelectedIndex()){ // Combobox Categorias
+            case 0:
+                categoria="Bronce";
+                break;
+            case 1:
+                categoria="Plata";
+                break;
+            case 2:
+                categoria="Oro";
+                break; 
+            case 3:
+                categoria="Zafiro";
+                break;
+        }
+        u.l.edit(new Cliente(cedula,nombre,fecha,correo,categoria));
     }
    
     private void JBtnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnRegistroActionPerformed
         agregar();
+        limpiar();
     }//GEN-LAST:event_JBtnRegistroActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
@@ -271,12 +260,13 @@ public class JFrameCliente extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Debe rellenar el espacio de cedula");
         }
+        limpiar();
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         cedula = Integer.parseInt(jTxtCedula.getText());
         if(!Vacios()){
-            //c.remove(p);
+            //u.l.remove(p);
         }else{
             JOptionPane.showMessageDialog(null, "Debe rellenar el espacio de cedula");
         }
@@ -307,14 +297,15 @@ public class JFrameCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Regristro_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Regristro_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Regristro_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Regristro_Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

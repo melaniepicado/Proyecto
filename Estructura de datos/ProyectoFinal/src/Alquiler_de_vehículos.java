@@ -2,78 +2,72 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Alquiler_de_vehículos extends javax.swing.JFrame {
-
-   
-    private String Días_de_alquiler;
-    private String Cantidad_de_pasajeros;
-    protected String Marca_del_vehículo;
-    private String Modelo_del_vehículo;
-    private String Extras;
+    Union p = new Union();
+    
+    private String Días_de_alquiler, Cantidad_de_pasajeros,Marca_del_vehículo,
+            Modelo_del_vehículo, Extras;
+    private NodoP siguiente;
+    private String placa, marca, modelo, color, combustible;
+    private int año, cilindrada, catPasajeros, precioXdia;
+    private String extras, estadoAsociado;
   
     public Alquiler_de_vehículos() {
         initComponents();
-        llenarComboHorario();
         setTitle("Alquiler de vehículo");
         ImageIcon iconoFrom=new ImageIcon("iconos/car.png");
         setIconImage(new ImageIcon(getClass().getResource(iconoFrom.getDescription())).getImage());
         setLocationRelativeTo(null);
         setResizable(false);
     }
-     public void llenarComboHorario(){
-       
-       jComboBox1.addItem("CÁMARA DE VISIÓN 360 GRADOS");
-       jComboBox1.addItem("CONEXIÓN A INTERNET");
-       jComboBox1.addItem("FRENADA AUTOMÁTICA DE EMERGENCIA");
-       jComboBox1.addItem("SISTEMA DE ENTRETENIMIENTO EN LOS ASIENTOS POSTERIORES");
-   }
     
     public void limpiarControles() {
         jTextField1.setText("");
         jTextField2.setText("");
         jTextField3.setText("");
         jTextField4.setText("");
-        jComboBox1.setSelectedIndex(0);
+        jCheckBox1.setSelected(false);
     }
     
    public boolean CamposVacios(){
-         if(((jTextField1.getText().equals(""))||(jTextField2.getText().equals(""))||(jTextField3.getText().equals("")))||(jTextField4.getText().equals(""))){
-          return true;
-                  }else{
-             return false;
-         }   
+        if(((jTextField1.getText().equals(""))||(jTextField2.getText().equals(""))
+                ||(jTextField3.getText().equals("")))||(jTextField4.getText().equals(""))){
+            return true;
+        }else{
+            return false;
+        }   
    }
    
    public void agregar(){
         if(CamposVacios()){
-            JOptionPane.showMessageDialog(null,"No se puede agregar. Hay campos vacios!");
+            JOptionPane.showMessageDialog(null,"No se puede agregar. ¡Hay campos vacios!");
         }else{
             Días_de_alquiler = jTextField1.getText();
             Cantidad_de_pasajeros = jTextField2.getText();
             Marca_del_vehículo = jTextField3.getText();
             Modelo_del_vehículo = jTextField4.getText();
-            
-            switch (jComboBox1.getSelectedIndex()) { //Combobox 1
-                case 0:
-                    Extras="CÁMARA DE VISIÓN 360 GRADOS";
-                    break;
-                case 1:
-                    Extras="CONEXIÓN A INTERNET";
-                    break;
-                case 2:
-                    Extras="FRENADA AUTOMÁTICA DE EMERGENCIA";
-                    break;
-                default:
-                    Extras="SISTEMA DE ENTRETENIMIENTO EN LOS ASIENTOS POSTERIORES";
-                    break;
+            if(jCheckBox1.isSelected()){ //Checkbox 1
+                extras="Con extras";
+                precioXdia = 40000;
+            }else{
+                extras="Sin extras";
+                precioXdia = 30000;
             }
-             Union Per=new Union();
-             Per.p.push(Días_de_alquiler);
-             Per.p.push(Cantidad_de_pasajeros);
-             Per.p.push(Marca_del_vehículo);
-             Per.p.push(Modelo_del_vehículo);
-             Per.p.push(Extras);   
-             JOptionPane.showMessageDialog(null, "Se han guardado los datos");
-             Per.p.listar();
+            
+            if(!p.v.Vacia()){
+                if (p.v.encuentra(Cantidad_de_pasajeros)
+                        && p.v.encuentra(Marca_del_vehículo) 
+                        && p.v.encuentra(Modelo_del_vehículo)){
+
+                    p.p.push(new Alquiler_Vehiculos(Días_de_alquiler, 
+                            Marca_del_vehículo, Modelo_del_vehículo, 
+                            Cantidad_de_pasajeros, Extras));
+                    p.p.listar();
+                    JOptionPane.showMessageDialog(null, "Se han guardado los datos");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Especificaciones de "
+                            + "preferencia no dispnibles");
+                } 
+            }
         }
         
         
@@ -87,7 +81,6 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -95,10 +88,11 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(500, 448));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/al.png"))); // NOI18N
         jButton4.setText("Top Vehiculos");
@@ -123,12 +117,6 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Modelo del vehículo ");
 
@@ -139,7 +127,7 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
         });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add.png"))); // NOI18N
-        jButton1.setText("Agregar Vehículo");
+        jButton1.setText("Agregar alquiler");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -167,14 +155,6 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/consulta.png"))); // NOI18N
-        jButton5.setText("Consultar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/meda.png"))); // NOI18N
         jButton6.setText("Top Clientes ");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -183,99 +163,84 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox1.setText("Extras");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                        .add(385, 385, 385))
                     .add(layout.createSequentialGroup()
+                        .add(29, 29, 29)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(layout.createSequentialGroup()
                                 .add(jLabel5)
                                 .add(18, 18, 18)
                                 .add(jTextField8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(jLabel3)
                             .add(layout.createSequentialGroup()
                                 .add(jLabel4)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                                 .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(0, 321, Short.MAX_VALUE))
-                    .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel1)
+                            .add(jCheckBox1)
                             .add(layout.createSequentialGroup()
-                                .add(jLabel2)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(jLabel1)
+                                    .add(jLabel3)
                                     .add(layout.createSequentialGroup()
+                                        .add(jLabel2)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                    .add(layout.createSequentialGroup()
+                                        .add(141, 141, 141)
                                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                            .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .add(jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
-                        .add(22, 22, 22))))
-            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(layout.createSequentialGroup()
-                    .add(170, 170, 170)
-                    .add(jButton5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(228, Short.MAX_VALUE)))
-            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(379, Short.MAX_VALUE)
-                    .add(jButton6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(19, 19, 19)))
+                                            .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                            .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 80, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 57, Short.MAX_VALUE)
+                                .add(jButton1))))
+                    .add(layout.createSequentialGroup()
+                        .add(52, 52, 52)
+                        .add(jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(58, 58, 58)
+                        .add(jButton6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(79, 79, 79))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
+                .add(46, 46, 46)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(jTextField1))
+                    .add(jLabel5)
+                    .add(jTextField8))
+                .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(18, 24, Short.MAX_VALUE)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel1)
+                            .add(jTextField1))
+                        .add(9, 9, 9)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel2)
                             .add(jTextField2))
                         .add(18, 18, 18)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel3)
-                            .add(jTextField3))
-                        .add(18, 18, 18))
-                    .add(layout.createSequentialGroup()
-                        .add(45, 45, 45)
-                        .add(jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .add(jTextField3)))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(0, 0, Short.MAX_VALUE)
+                        .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(9, 9, 9)))
+                .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel4)
                     .add(jTextField4))
                 .add(18, 18, 18)
-                .add(jComboBox1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(28, 28, 28)
-                .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(46, 46, 46)
+                .add(jCheckBox1)
+                .add(32, 32, 32)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5)
-                    .add(jTextField8))
-                .add(74, 74, 74))
-            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(313, Short.MAX_VALUE)
-                    .add(jButton5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(54, 54, 54)))
-            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                .add(layout.createSequentialGroup()
-                    .add(21, 21, 21)
-                    .add(jButton6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(346, Short.MAX_VALUE)))
+                    .add(jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButton6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(119, 119, 119))
         );
 
         pack();
@@ -284,10 +249,6 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
 
     }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
 
@@ -314,10 +275,6 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         TopClientes ve =new TopClientes();
@@ -362,9 +319,8 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

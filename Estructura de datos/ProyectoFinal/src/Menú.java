@@ -36,9 +36,11 @@ public class Menú extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        Vehículos = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        Clientes = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -46,7 +48,7 @@ public class Menú extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Vehículos");
+        Vehículos.setText("Vehículos");
 
         jMenuItem1.setText("Regristrar vehículo");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -54,7 +56,7 @@ public class Menú extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        Vehículos.add(jMenuItem1);
 
         jMenuItem3.setText("Alquiler de vehículos");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -62,9 +64,21 @@ public class Menú extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        Vehículos.add(jMenuItem3);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(Vehículos);
+
+        Clientes.setText("Clientes");
+
+        jMenuItem5.setText("Regristrar clientee");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        Clientes.add(jMenuItem5);
+
+        jMenuBar1.add(Clientes);
 
         setJMenuBar(jMenuBar1);
 
@@ -91,6 +105,11 @@ public class Menú extends javax.swing.JFrame {
        Alquiler_de_vehículos A = new Alquiler_de_vehículos();
        A.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        Regristro_Cliente c = new Regristro_Cliente();
+        c.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,11 +147,13 @@ public class Menú extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu Clientes;
+    private javax.swing.JMenu Vehículos;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
 }

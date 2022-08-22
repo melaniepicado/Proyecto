@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 /**
  *
  * @author MIKE-PC
@@ -19,21 +14,18 @@ public class Lista {
         
         }else{
            NodoC aux = new NodoC(p);
-            aux.setNext(cabeza);
-            cabeza=aux;
-           
+           aux.setNext(cabeza);
+           cabeza=aux;
         }
         ultimo.setNext(cabeza);
-        
     }
     
     public void edit(Cliente p){
         NodoC aux = cabeza;
-        while(aux.getNext().getDato().getCedula() != p.getCedula()){
+        while(aux != null && aux.getNext().getDato().getCedula() != p.getCedula()){
             aux = aux.getNext();
         }
         aux.getNext().setDato(p);
-        
     }
     
     public void remove(Cliente p){
@@ -41,13 +33,11 @@ public class Lista {
         while(aux.getNext().getDato().getCedula() != p.getCedula()){
             aux = aux.getNext();
         }
-        
-            NodoC temp=new NodoC(p);
-            temp.setNext(aux.getNext());
-            aux.setNext(temp);
-            temp.setNext(cabeza);
-            temp=ultimo;
-                 
+        NodoC temp=new NodoC(p);
+        temp.setNext(aux.getNext());
+        aux.setNext(temp);
+        temp.setNext(cabeza);
+        temp=ultimo;     
     }
     
     public void consulta(){
@@ -64,10 +54,7 @@ public class Lista {
             
         }
     }
-    
-    
-    
-    
+
     @Override
     public String toString(){
         NodoC aux = cabeza;
@@ -83,6 +70,5 @@ public class Lista {
             s+="vacia";
         }
         return s;
-    }
-    
+    } 
 }

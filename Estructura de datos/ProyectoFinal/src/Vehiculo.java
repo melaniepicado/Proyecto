@@ -121,7 +121,7 @@ public class Vehiculo {
     public String toString() {
         return "Vehiculo{" + "placa=" + placa + ", marca=" + marca + ", "
                 + "modelo=" + modelo + ", color=" + color + ", combustible=" + 
-                combustible + ", a\u00f1o=" + año + ", cilindrada=" + cilindrada 
+                combustible + ", año" + año + ", cilindrada=" + cilindrada 
                 + ", catPasajeros=" + catPasajeros + ", precioXdia=" + precioXdia 
                 + ", extras=" + extras + ", estadoAsociado=" + estadoAsociado + '}';
     }  

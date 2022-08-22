@@ -6,29 +6,11 @@ public class Cola_Vehiculo {
     private NodoV frente;
     private NodoV ultimo;
     private int tamaño;
-    
-    private NodoP cima;
-    private int largo;
 
     public Cola_Vehiculo() {
-        this.cima = null;
-        this.largo = 0;
-    }    
-
-    public NodoV getFrente() {
-        return frente;
-    }
-
-    public void setFrente(NodoV frente) {
         this.frente = frente;
-    }
-
-    public NodoV getUltimo() {
-        return ultimo;
-    }
-
-    public void setUltimo(NodoV ultimo) {
         this.ultimo = ultimo;
+        this.tamaño = tamaño;
     }
     
     public Vehiculo primero(){
@@ -36,6 +18,31 @@ public class Cola_Vehiculo {
             return null;
         }
         return frente.getDato();
+    }
+    
+    public boolean Vacia(){ return frente == null;}
+    
+    public int tamanio(){ return this.tamaño;}
+    
+    public NodoV getNode(int index) {
+
+        if (Vacia() || (index < 0 || index >= tamanio())) {
+            return null;
+        } else if (index == 0) {
+            return frente;
+        } else if (index == tamanio() - 1) {
+            NodoV p = new NodoV();
+            return p.getAtras();
+        } else {
+            NodoV buscado = frente;
+            int contador = 0;
+            while (contador < index) {
+                contador++;
+                buscado = buscado.getAtras();
+            }
+            return buscado;
+        }
+
     }
     
     public void encola (Vehiculo d){
@@ -67,6 +74,12 @@ public class Cola_Vehiculo {
         
         while(esta != true && aux != null){
             if(x.equals(aux.getDato().getPlaca())){
+                esta = true;
+            }else if(x.equals(aux.getDato().getCatPasajeros())){
+                esta = true;
+            }if(x.equals(aux.getDato().getModelo())){
+                esta = true;
+            }if(x.equals(aux.getDato().getMarca())){
                 esta = true;
             }else{
                 aux = aux.getAtras();

@@ -11,9 +11,9 @@ public class Pila {
     
     public int tamanio(){ return this.largo;}
     
-    public void push(String Letra){
+    public void push(Alquiler_Vehiculos dato){
         NodoP newNode = new NodoP();
-        newNode.setLetra(Letra);
+        newNode.setDato(dato);
         
         if (this.Vacia()){
             this.cima = newNode;
@@ -26,11 +26,9 @@ public class Pila {
     }
      
      public void listar(){
-        
         NodoP aux = cima;
         while(aux != null){
-            
-            System.out.println("|\t" + aux.getLetra()+ "\t|");
+            System.out.println("|\t" + aux.getDato()+ "\t|");
             System.out.println("-----------------");
             aux = aux.getSiguiente();
         }

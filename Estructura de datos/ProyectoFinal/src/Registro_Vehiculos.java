@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
  * @author melan
  */
 public class Registro_Vehiculos extends javax.swing.JFrame {
-    Cola_Vehiculo v = new Cola_Vehiculo();
+    Union u = new Union();
     
     private String placa, marca, modelo, color, combustible;
     private int año, cilindrada, catPasajeros, precioXdia;
@@ -149,11 +149,11 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
                     break;
             }
 
-            v.encola(new Vehiculo(placa,marca,modelo,color,combustible,año,
+            u.v.encola(new Vehiculo(placa,marca,modelo,color,combustible,año,
                     cilindrada,catPasajeros,precioXdia, extras,estadoAsociado));
             JOptionPane.showMessageDialog(null, "Se han guardado los datos");
         }
-        v.listar();
+        u.v.listar();
     }
     
     /**
@@ -219,7 +219,7 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
                 break;
         }
 
-        v.modificar(new Vehiculo(placa,marca,modelo,color,combustible,año,
+        u.v.modificar(new Vehiculo(placa,marca,modelo,color,combustible,año,
                 cilindrada,catPasajeros,precioXdia, extras,estadoAsociado));
         JOptionPane.showMessageDialog(null, "Se han guardado los datos");
     }
@@ -485,8 +485,8 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         placa = jTextField6.getText();
         if(!placa.equals("")){
-            v.extraer(placa);
-            v.listar();
+            u.v.extraer(placa);
+            u.v.listar();
         }else{
             JOptionPane.showMessageDialog(null, "Debe rellenar el espacio de placa");
         }
@@ -501,7 +501,7 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
         placa = jTextField6.getText();
         if(!Vacios()){
             modificar();
-            v.listar();
+            u.v.listar();
         }else{
             JOptionPane.showMessageDialog(null, "Debe rellenar espacios");
         }

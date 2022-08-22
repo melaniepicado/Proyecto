@@ -30,8 +30,4 @@ public class NodoV {
     public String toString() {
         return "" + dato;
     }
-
-    void setDato(int d) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
