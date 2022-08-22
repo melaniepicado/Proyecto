@@ -4,9 +4,12 @@ import javax.swing.JOptionPane;
 public class Alquiler_de_vehículos extends javax.swing.JFrame {
     Union p = new Union();
     
-    private String Cedula, Días_de_alquiler, Cantidad_de_pasajeros,Marca_del_vehículo,
-            Modelo_del_vehículo, Extras, precioXdia;
+    private String Cedula,Cantidad_de_pasajeros,Marca_del_vehículo,
+            Modelo_del_vehículo, Extras;
   
+    private int Días_de_alquiler,precioXdia;
+    
+    
     public Alquiler_de_vehículos() {
         initComponents();
         setTitle("Alquiler de vehículo");
@@ -38,16 +41,16 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"No se puede agregar. ¡Hay campos vacios!");
         }else{
             Cedula = jTextField8.getText();
-            Días_de_alquiler = jTextField1.getText();
+            Días_de_alquiler = Integer.parseInt(jTextField1.getText());
             Cantidad_de_pasajeros = jTextField2.getText();
             Marca_del_vehículo = jTextField3.getText();
             Modelo_del_vehículo = jTextField4.getText();
             if(jCheckBox1.isSelected()){ //Checkbox 1
                 Extras="Con extras";
-                precioXdia = "40000";
+                precioXdia = 40000*Días_de_alquiler;
             }else{
                 Extras="Sin extras";
-                precioXdia = "30000";
+                precioXdia = 30000*Días_de_alquiler;
             }
             
             //if(!p.v.Vacia()){
@@ -57,7 +60,7 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
 
                     p.p.push(new Alquiler_Vehiculos(Cedula,Días_de_alquiler, 
                             Marca_del_vehículo, Modelo_del_vehículo, 
-                            Cantidad_de_pasajeros, Extras));
+                            Cantidad_de_pasajeros, Extras,precioXdia));
                     p.p.listar();
                     JOptionPane.showMessageDialog(null, "Se han guardado los datos");
                 //}else{

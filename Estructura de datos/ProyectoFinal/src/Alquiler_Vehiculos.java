@@ -1,22 +1,32 @@
 public class Alquiler_Vehiculos {
-    private String Cedula, Días_de_alquiler,Marca_del_vehículo,
+    private String Cedula,Marca_del_vehículo,
             Modelo_del_vehículo, Cantidad_de_pasajeros, Extras;
 
-    public Alquiler_Vehiculos(String Cedula, String Días_de_alquiler, String Marca_del_vehículo, 
-            String Modelo_del_vehículo, String Cantidad_de_pasajeros, String Extras) {
+    private int Días_de_alquiler,precioXdia;
+    public Alquiler_Vehiculos(String Cedula, int Días_de_alquiler, String Marca_del_vehículo, 
+            String Modelo_del_vehículo, String Cantidad_de_pasajeros, String Extras, int precioXdia) {
         this.Cedula = Cedula;
         this.Días_de_alquiler = Días_de_alquiler;
         this.Marca_del_vehículo = Marca_del_vehículo;
         this.Modelo_del_vehículo = Modelo_del_vehículo;
         this.Cantidad_de_pasajeros = Cantidad_de_pasajeros;
         this.Extras = Extras;
+        this.precioXdia = precioXdia;
     }
 
-    public String getDías_de_alquiler() {
+    public int getPrecioXdia() {
+        return precioXdia;
+    }
+
+    public void setPrecioXdia(int precioXdia) {
+        this.precioXdia = precioXdia;
+    }
+   
+    public int getDías_de_alquiler() {
         return Días_de_alquiler;
     }
 
-    public void setDías_de_alquiler(String Días_de_alquiler) {
+    public void setDías_de_alquiler(int Días_de_alquiler) {
         this.Días_de_alquiler = Días_de_alquiler;
     }
 
