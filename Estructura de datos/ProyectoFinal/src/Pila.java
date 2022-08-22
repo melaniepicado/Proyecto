@@ -28,7 +28,7 @@ public class Pila {
      public void listar(){
         NodoP aux = cima;
         while(aux != null){
-            System.out.println("|\t" + aux.getDato()+ "\t|");
+            System.out.println("|" + aux.getDato()+ "|");
             System.out.println("-----------------");
             aux = aux.getSiguiente();
         }

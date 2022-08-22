@@ -4,12 +4,8 @@ import javax.swing.JOptionPane;
 public class Alquiler_de_vehículos extends javax.swing.JFrame {
     Union p = new Union();
     
-    private String Días_de_alquiler, Cantidad_de_pasajeros,Marca_del_vehículo,
-            Modelo_del_vehículo, Extras;
-    private NodoP siguiente;
-    private String placa, marca, modelo, color, combustible;
-    private int año, cilindrada, catPasajeros, precioXdia;
-    private String extras, estadoAsociado;
+    private String Cedula, Días_de_alquiler, Cantidad_de_pasajeros,Marca_del_vehículo,
+            Modelo_del_vehículo, Extras, precioXdia;
   
     public Alquiler_de_vehículos() {
         initComponents();
@@ -41,33 +37,34 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
         if(CamposVacios()){
             JOptionPane.showMessageDialog(null,"No se puede agregar. ¡Hay campos vacios!");
         }else{
+            Cedula = jTextField8.getText();
             Días_de_alquiler = jTextField1.getText();
             Cantidad_de_pasajeros = jTextField2.getText();
             Marca_del_vehículo = jTextField3.getText();
             Modelo_del_vehículo = jTextField4.getText();
             if(jCheckBox1.isSelected()){ //Checkbox 1
-                extras="Con extras";
-                precioXdia = 40000;
+                Extras="Con extras";
+                precioXdia = "40000";
             }else{
-                extras="Sin extras";
-                precioXdia = 30000;
+                Extras="Sin extras";
+                precioXdia = "30000";
             }
             
-            if(!p.v.Vacia()){
-                if (p.v.encuentra(Cantidad_de_pasajeros)
-                        && p.v.encuentra(Marca_del_vehículo) 
-                        && p.v.encuentra(Modelo_del_vehículo)){
+            //if(!p.v.Vacia()){
+                //if (p.v.encuentra(Cantidad_de_pasajeros)
+                        //&& p.v.encuentra(Marca_del_vehículo) 
+                        //&& p.v.encuentra(Modelo_del_vehículo)){
 
-                    p.p.push(new Alquiler_Vehiculos(Días_de_alquiler, 
+                    p.p.push(new Alquiler_Vehiculos(Cedula,Días_de_alquiler, 
                             Marca_del_vehículo, Modelo_del_vehículo, 
                             Cantidad_de_pasajeros, Extras));
                     p.p.listar();
                     JOptionPane.showMessageDialog(null, "Se han guardado los datos");
-                }else{
-                    JOptionPane.showMessageDialog(null, "Especificaciones de "
-                            + "preferencia no dispnibles");
-                } 
-            }
+                //}else{
+                    //JOptionPane.showMessageDialog(null, "Especificaciones de "
+                            //+ "preferencia no dispnibles");
+                //} 
+            //}
         }
         
         

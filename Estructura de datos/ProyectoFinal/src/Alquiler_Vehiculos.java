@@ -1,9 +1,10 @@
 public class Alquiler_Vehiculos {
-    private String Días_de_alquiler,Marca_del_vehículo,
+    private String Cedula, Días_de_alquiler,Marca_del_vehículo,
             Modelo_del_vehículo, Cantidad_de_pasajeros, Extras;
 
-    public Alquiler_Vehiculos(String Días_de_alquiler, String Marca_del_vehículo, 
+    public Alquiler_Vehiculos(String Cedula, String Días_de_alquiler, String Marca_del_vehículo, 
             String Modelo_del_vehículo, String Cantidad_de_pasajeros, String Extras) {
+        this.Cedula = Cedula;
         this.Días_de_alquiler = Días_de_alquiler;
         this.Marca_del_vehículo = Marca_del_vehículo;
         this.Modelo_del_vehículo = Modelo_del_vehículo;
@@ -50,12 +51,23 @@ public class Alquiler_Vehiculos {
     public void setExtras(String Extras) {
         this.Extras = Extras;
     }
-    
+
+    public String getCedula() {
+        return Cedula;
+    }
+
+    public void setCedula(String Cedula) {
+        this.Cedula = Cedula;
+    }
+
     @Override
     public String toString() {
-        return "Alquiler_Vehiculos{" + "Días_de_alquiler=" + Días_de_alquiler 
-                + ", Marca_del_vehículo=" + Marca_del_vehículo + ", Modelo_del_vehículo=" 
-                + Modelo_del_vehículo + ", Cantidad_de_pasajeros=" + Cantidad_de_pasajeros + 
-                ", Extras=" + Extras + '}';
+        return "Cedula del cliente: " + Cedula+
+                "\nDías_de_alquiler: " + Días_de_alquiler + 
+                "\nMarca_del_vehículo: " + Marca_del_vehículo + 
+                "\nModelo_del_vehículo: " + Modelo_del_vehículo + 
+                "\nCantidad_de_pasajeros: " + Cantidad_de_pasajeros + 
+                "\nExtras: " + Extras;
     }
+    
 }
