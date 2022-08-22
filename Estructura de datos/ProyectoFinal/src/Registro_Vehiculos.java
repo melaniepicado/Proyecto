@@ -294,6 +294,12 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
         Agregar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add.png"))); // NOI18N
         Agregar.setText("Agregar Vehículo");
@@ -500,6 +506,10 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe rellenar espacios");
         }
     }//GEN-LAST:event_ModificarActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments

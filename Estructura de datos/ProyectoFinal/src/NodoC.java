@@ -11,7 +11,7 @@ public class NodoC {
     
     private Cliente dato;
     private NodoC next;
-    private NodoC back;
+    
     
     @Override
     public String toString(){
@@ -38,12 +38,5 @@ public class NodoC {
         this.next = next;
     }
 
-    public NodoC getBack() {
-        return back;
-    }
-
-    public void setBack(NodoC back) {
-        this.back = back;
-    }
     
 }
