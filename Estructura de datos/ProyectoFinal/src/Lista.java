@@ -16,27 +16,58 @@ public class Lista {
         if(cabeza==null){
             cabeza = new NodoC(p);
             ultimo = cabeza;
-        }else if(p.getCedula()<cabeza.getDato().getCedula()){ 
-            NodoC aux = new NodoC(p);
+        
+        }else{
+           NodoC aux = new NodoC(p);
             aux.setNext(cabeza);
             cabeza=aux;
-        }else if(ultimo.getDato().getCedula() <= p.getCedula()){
-            ultimo.setNext(new NodoC(p));
-            ultimo = ultimo.getNext();
-        }else{
-           NodoC aux = cabeza;
-           while (aux.getNext().getDato().getCedula() < p.getCedula()){
-               aux=aux.getNext();
-           }
-           NodoC temp = new NodoC(p);
-           temp.setNext(aux.getNext());
-           temp.setBack(aux);
-           aux.setNext(temp);
-           temp.getNext().setBack(temp); //nuevo
+           
         }
         ultimo.setNext(cabeza);
-        cabeza.setBack(ultimo); 
-    }    
+        
+    }
+    
+    public void edit(Cliente p){
+        NodoC aux = cabeza;
+        while(aux.getNext().getDato().getCedula() != p.getCedula()){
+            aux = aux.getNext();
+        }
+        aux.getNext().setDato(p);
+        
+    }
+    
+    public void remove(Cliente p){
+        NodoC aux = cabeza;
+        while(aux.getNext().getDato().getCedula() != p.getCedula()){
+            aux = aux.getNext();
+        }
+        
+            NodoC temp=new NodoC(p);
+            temp.setNext(aux.getNext());
+            aux.setNext(temp);
+            temp.setNext(cabeza);
+            temp=ultimo;
+                 
+    }
+    
+    public void consulta(){
+        NodoC aux = cabeza;
+        System.out.println("------------Lista de Clientes Registrados------------");
+        while(aux != null){
+            System.out.println(
+                    "Cedula: "+aux.getDato().getCedula()+
+                    "\n Nombre: "+ aux.getDato().getNombreC()+
+                    "\n Fecha de nacimiento: "+ aux.getDato().getFechaNac()+
+                    "\n Correo electrinico: "+ aux.getDato().getCorreo()+
+                    "\n Categoria: "+ aux.getDato().getCategoria());
+            System.out.println("-----------------------");
+            
+        }
+    }
+    
+    
+    
+    
     @Override
     public String toString(){
         NodoC aux = cabeza;
