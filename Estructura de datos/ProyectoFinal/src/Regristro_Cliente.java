@@ -40,6 +40,7 @@ public class Regristro_Cliente extends javax.swing.JFrame {
         jButtonModificar = new javax.swing.JButton();
         jButtonEliminar = new javax.swing.JButton();
         jCboxCategoria = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -92,6 +93,15 @@ public class Regristro_Cliente extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/asking.png"))); // NOI18N
+        jButton1.setText("Consultar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -105,22 +115,20 @@ public class Regristro_Cliente extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTxtCorreo)
-                    .addComponent(jTxtFecha)
-                    .addComponent(jTxtCedula)
-                    .addComponent(jCboxCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTxtNombre))
-                .addGap(114, 114, 114)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonEliminar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JBtnRegistro)
-                            .addComponent(jButtonModificar))
-                        .addContainerGap(197, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTxtFecha)
+                        .addComponent(jTxtCedula)
+                        .addComponent(jCboxCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTxtNombre))
+                    .addComponent(jTxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonModificar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JBtnRegistro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,18 +162,20 @@ public class Regristro_Cliente extends javax.swing.JFrame {
                         .addComponent(jButtonModificar)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonEliminar)
-                        .addGap(287, 287, 287))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(247, 247, 247))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -222,7 +232,7 @@ public class Regristro_Cliente extends javax.swing.JFrame {
             u.l.inserta(new Cliente(cedula,nombre,fecha,correo,categoria));
             u.l.toString();
         }
-            
+        System.out.println(u.l);
     }
     
     public void editar(){
@@ -246,6 +256,7 @@ public class Regristro_Cliente extends javax.swing.JFrame {
                 break;
         }
         u.l.edit(new Cliente(cedula,nombre,fecha,correo,categoria));
+        System.out.println(u.l);
     }
    
     private void JBtnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBtnRegistroActionPerformed
@@ -267,6 +278,7 @@ public class Regristro_Cliente extends javax.swing.JFrame {
         cedula = Integer.parseInt(jTxtCedula.getText());
         if(!Vacios()){
             //u.l.remove(p);
+            //System.out.println(u.l);
         }else{
             JOptionPane.showMessageDialog(null, "Debe rellenar el espacio de cedula");
         }
@@ -279,6 +291,14 @@ public class Regristro_Cliente extends javax.swing.JFrame {
     private void jCboxCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCboxCategoriaItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_jCboxCategoriaItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(!Vacios()){
+            JOptionPane.showMessageDialog(null, u.l);
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe rellenar el espacio de cedula");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,6 +340,7 @@ public class Regristro_Cliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBtnRegistro;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonModificar;
     private javax.swing.JComboBox<String> jCboxCategoria;

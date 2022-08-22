@@ -65,9 +65,7 @@ public class Alquiler_de_vehículos extends javax.swing.JFrame {
                             //+ "preferencia no dispnibles");
                 //} 
             //}
-        }
-        
-        
+        }  
    }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -63,7 +63,7 @@ public class Menú extends javax.swing.JFrame {
 
         Clientes.setText("Clientes");
 
-        jMenuItem5.setText("Regristrar clientee");
+        jMenuItem5.setText("Regristrar cliente");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);

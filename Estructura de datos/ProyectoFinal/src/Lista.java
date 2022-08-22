@@ -51,7 +51,7 @@ public class Lista {
                     "\n Correo electrinico: "+ aux.getDato().getCorreo()+
                     "\n Categoria: "+ aux.getDato().getCategoria());
             System.out.println("-----------------------");
-            
+            aux = aux.getNext();
         }
     }
 

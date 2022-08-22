@@ -257,6 +257,7 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         Modificar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        consultar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -300,7 +301,7 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
             }
         });
 
-        Agregar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        Agregar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add.png"))); // NOI18N
         Agregar.setText("Agregar Vehículo");
         Agregar.addActionListener(new java.awt.event.ActionListener() {
@@ -319,7 +320,7 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Estado asociado");
 
-        Eliminar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        Eliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/delete.png"))); // NOI18N
         Eliminar.setText("Eliminar Vehículo");
         Eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -331,7 +332,7 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 10)); // NOI18N
         jLabel9.setText("Rellenar espacio de placa");
 
-        Modificar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        Modificar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/edit.png"))); // NOI18N
         Modificar.setText("Modificar datos");
         Modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -342,6 +343,15 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 2, 10)); // NOI18N
         jLabel11.setText("Rellenar todos los espacios");
+
+        consultar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        consultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/asking.png"))); // NOI18N
+        consultar.setText("Consultar");
+        consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -393,19 +403,25 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(92, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(216, 216, 216)
-                        .addComponent(jLabel9)
-                        .addGap(73, 73, 73)
-                        .addComponent(jLabel11))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
                         .addComponent(Agregar)
                         .addGap(18, 18, 18)
                         .addComponent(Eliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(Modificar)))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel9)
+                        .addGap(42, 42, 42)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Modificar)
+                        .addGap(21, 21, 21)
+                        .addComponent(consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel11)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -456,7 +472,8 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Agregar)
                     .addComponent(Eliminar)
-                    .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -511,6 +528,10 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
+    private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
+        
+    }//GEN-LAST:event_consultarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -550,6 +571,7 @@ public class Registro_Vehiculos extends javax.swing.JFrame {
     private javax.swing.JButton Agregar;
     private javax.swing.JButton Eliminar;
     private javax.swing.JButton Modificar;
+    private javax.swing.JButton consultar;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
